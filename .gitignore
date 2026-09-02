@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Hydra (hydra.run.dir is ".", so single runs drop these in the repo root)
+.hydra/
+outputs/
+multirun/
+*.log
+
+# Weights & Biases
+/wandb/
+
+# Training outputs: checkpoints (train.checkpoint) and rollout HTML (train.capture_vis)
+runs/
+*.pkl
+
+.vscode/
+.DS_Store

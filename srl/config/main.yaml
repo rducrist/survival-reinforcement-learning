@@ -1,0 +1,64 @@
+defaults:
+  - agent: srl
+  - wandb: default
+  # - override hydra/launcher: our_slurm
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+hydra:
+  run:
+    dir: .
+
+
+seed: 1000
+
+train:
+  total_env_steps: 100_000_000            # number of environment steps to train for
+  num_epochs: 100                         # number of epochs (each ends with an evaluation)
+  unroll_length: 62                       # number of steps to unroll the policy for when collecting data
+  max_replay_size: 10000                  # maximum number of transitions to store in the replay buffer per environment
+  min_replay_size: 1000                   # minimum number of transitions per environment before training starts
+  batch_size: 512                         # batch size to use for training
+  num_episodes_per_env: 1                 # episodes sampled per environment per training step
+  training_steps_multiplier: 1            # multiplier on the number of training steps per epoch
+  use_all_batches: false                  # use every batch built from the sampled trajectories instead of subsampling
+  num_sgd_batches_per_training_step: 800  # batches per training step (ignored if use_all_batches=true)
+  actor_update_every: 1                   # gradient steps between actor updates (critic updates every step)
+  track: false                            # log to W&B (off by default; opt in with train.track=true)
+  checkpoint: false                        # write params .pkl into runs/
+  capture_vis: true                       # render rollout HTML at the end of training
+  vis_length: 1000
+  num_render: 10
+  expl_actor: true                        # sample actions during data collection (else act deterministically)
+  eval_actor: false                       # sample actions during evaluation (else act deterministically)
+  env_steps_per_actor_step: ???           # derived in calculate_steps()
+  num_prefill_env_steps: ???              # derived in calculate_steps()
+  num_prefill_actor_steps: ???            # derived in calculate_steps()
+  num_training_steps_per_epoch: ???       # derived in calculate_steps()
+
+
+optimizer:
+  actor_lr: 0.0003
+  critic_lr: 0.0003
+  alpha_lr: 0.0003
+
+architecture:
+  critic_network_width: 256
+  critic_network_depth: 8
+  actor_network_width: 256
+  actor_network_depth: 8
+  activation: "swish"
+  use_residuals: true
+
+env:
+  # ant, humanoid,
+  # ant_<layout>_maze     with layout in {u, u2..u7, big, hardest} (+ _eval variants)
+  # humanoid_<layout>_maze with layout in {u, big, hardest} (+ _eval variants)
+  # arm_push_easy, arm_push_hard, arm_binpick_hard
+  env_id: ant_u4_maze
+  episode_length: 1000
+  num_envs: 512
+  num_eval_envs: 100
+  state_dim: null       # set by make_env() from env_id
+  goal_start_idx: null  # set by make_env() from env_id
+  goal_end_idx: null    # set by make_env() from env_id

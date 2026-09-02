@@ -1,0 +1,6 @@
+track: true
+wandb_project_name: srl
+wandb_entity: your_name
+wandb_mode: online
+wandb_dir: .
+wandb_group: null

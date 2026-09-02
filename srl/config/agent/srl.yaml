@@ -1,0 +1,28 @@
+agent_name: srl
+discount: 0.999
+
+# --- exploration ---
+entropy_param: 0.5
+disable_entropy: false
+
+# --- critic ---
+embed_dim: 128
+
+# --- survival labels ---
+surv_horizon: 1000    # H: censoring horizon, in env steps
+num_bins: 1000        # K: number of hazard bins (geometrically spaced over [0, H])
+surv_eps: 0.5         # goal-reached radius, in goal-space units
+
+# --- hindsight goal sampling (future / current / random), renormalized to 1 ---
+p_same: 0.85
+p_cur: 0.05
+p_random: 0.1
+
+# --- goal anchors ---
+# m = 1  -> the critic is conditioned on a single goal g
+# m > 1  -> the critic is conditioned on the sequence
+#           [g_u, g_{u + m_stride}, ..., g_{u + (m-1) * m_stride}],
+#           and an event requires the whole sequence to match. This also drops the
+#           last (m - 1) * m_stride steps of every sampled trajectory.
+m: 1
+m_stride: 1
