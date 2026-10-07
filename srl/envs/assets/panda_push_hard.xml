@@ -2,7 +2,7 @@
 <mujoco model="panda">
   <compiler angle="radian" meshdir="franka_emika_panda/assets" autolimits="true"/>
 
-  <option integrator="implicitfast"/>
+  <option integrator="Euler"/>
     
   <default>
     <default class="panda">

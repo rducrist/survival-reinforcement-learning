@@ -24,7 +24,7 @@ train:
   use_all_batches: false                  # use every batch built from the sampled trajectories instead of subsampling
   num_sgd_batches_per_training_step: 800  # batches per training step (ignored if use_all_batches=true)
   actor_update_every: 1                   # gradient steps between actor updates (critic updates every step)
-  track: false                            # log to W&B (off by default; opt in with train.track=true)
+  track: true                            # log to W&B (off by default; opt in with train.track=true)
   checkpoint: false                        # write params .pkl into runs/
   capture_vis: true                       # render rollout HTML at the end of training
   vis_length: 1000
@@ -55,7 +55,7 @@ env:
   # ant_<layout>_maze     with layout in {u, u2..u7, big, hardest} (+ _eval variants)
   # humanoid_<layout>_maze with layout in {u, big, hardest} (+ _eval variants)
   # arm_push_easy, arm_push_hard, arm_binpick_hard
-  env_id: ant_u4_maze
+  env_id: arm_push_easy
   episode_length: 1000
   num_envs: 512
   num_eval_envs: 100

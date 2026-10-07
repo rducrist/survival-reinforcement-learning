@@ -66,11 +66,11 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/4b/d7/ecf66c1cd12dc28b4040b15ab4d17b773b87fa9d29ca16125de01adb36cd/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/4e/89/36f4cd76cf4baf05c50ababb976249153f18c959171c7f6ba09a6f217260/pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/50/00/95794fe517d705c06b1918c4d32372d7476f81a2bfc6ed44f850bbe71ee2/orbax_checkpoint-0.5.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/51/b5/63e576514c5897bb64cb7dc635cef3b494c86e2f110d2a7267d61f47f3c9/mujoco-3.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5c/69/6aaa77d3fa3599d64527196e0b231476fa2cffc4995675974e22d9df83e9/flax-0.7.4-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/5d/71/cf8f463e944654cc5d853cde4c38d4d55cf78abab0da0895db8eb94f16fe/mujoco-3.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/5f/3b/e5d20b4f602d15fc5fc066f601052a7d6f5a401a50d67fac92098a5829a5/xxhash-4.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/60/44/202e027c224c26e15a53f01c5c7604c7f6b4fd368882d3164ea08fead207/nvidia_cuda_nvrtc_cu11-11.8.89-py3-none-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl
@@ -486,8 +486,7 @@ packages:
   - wandb-osh==1.2.2
   - brax==0.10.1
   - scipy==1.12.0
-  - mujoco==3.1.3
-  - mujoco-mjx==3.1.3
+  - mujoco==3.2.6
   - etils==1.13.0
   - rich==14.2.0
   - nvidia-cudnn-cu11>=8.9,<9.0 ; sys_platform == 'linux'
@@ -922,17 +921,6 @@ packages:
   - pytest ; extra == 'testing'
   - pytest-xdist ; extra == 'testing'
   requires_python: '>=3.9'
-- pypi: https://files.pythonhosted.org/packages/51/b5/63e576514c5897bb64cb7dc635cef3b494c86e2f110d2a7267d61f47f3c9/mujoco-3.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  name: mujoco
-  version: 3.1.3
-  sha256: f1578279ff581ed1c70893cc16ecf48a048a14568e9e64b446a2d32c22b1154c
-  requires_dist:
-  - absl-py
-  - etils[epath]
-  - glfw
-  - numpy
-  - pyopengl
-  requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl
   name: absl-py
   version: 2.5.0
@@ -991,6 +979,19 @@ packages:
   - nbstripout ; extra == 'testing'
   - black[jupyter]==23.7.0 ; extra == 'testing'
   - pyink==23.5.0 ; extra == 'testing'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/5d/71/cf8f463e944654cc5d853cde4c38d4d55cf78abab0da0895db8eb94f16fe/mujoco-3.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  name: mujoco
+  version: 3.2.6
+  sha256: a1345cc45d32c2abe6ef0ca983938cdfce7162f624e4686009a57952368f3df1
+  requires_dist:
+  - absl-py
+  - etils[epath]
+  - glfw
+  - numpy
+  - pyopengl
+  - usd-core ; extra == 'usd'
+  - pillow ; extra == 'usd'
   requires_python: '>=3.9'
 - pypi: https://files.pythonhosted.org/packages/5f/3b/e5d20b4f602d15fc5fc066f601052a7d6f5a401a50d67fac92098a5829a5/xxhash-4.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
   name: xxhash
@@ -1349,29 +1350,29 @@ packages:
   - opencv-python>=3.0 ; extra == 'other'
   - matplotlib>=3.0 ; extra == 'other'
   - moviepy>=1.0.0 ; extra == 'other'
-  - lz4>=3.1.0 ; extra == 'testing'
-  - matplotlib>=3.0 ; extra == 'testing'
-  - imageio>=2.14.1 ; extra == 'testing'
-  - pygame==2.1.0 ; extra == 'testing'
-  - opencv-python>=3.0 ; extra == 'testing'
-  - mujoco==2.2 ; extra == 'testing'
-  - swig==4.* ; extra == 'testing'
   - moviepy>=1.0.0 ; extra == 'testing'
+  - swig==4.* ; extra == 'testing'
+  - matplotlib>=3.0 ; extra == 'testing'
+  - lz4>=3.1.0 ; extra == 'testing'
+  - mujoco==2.2 ; extra == 'testing'
+  - opencv-python>=3.0 ; extra == 'testing'
+  - pygame==2.1.0 ; extra == 'testing'
   - mujoco-py>=2.1,<2.2 ; extra == 'testing'
   - box2d-py==2.3.5 ; extra == 'testing'
+  - imageio>=2.14.1 ; extra == 'testing'
   - pytest==7.0.1 ; extra == 'testing'
-  - lz4>=3.1.0 ; extra == 'all'
-  - matplotlib>=3.0 ; extra == 'all'
   - pytest==7.0.1 ; extra == 'all'
-  - imageio>=2.14.1 ; extra == 'all'
-  - pygame==2.1.0 ; extra == 'all'
-  - opencv-python>=3.0 ; extra == 'all'
-  - mujoco==2.2 ; extra == 'all'
-  - swig==4.* ; extra == 'all'
-  - ale-py~=0.8.0 ; extra == 'all'
   - moviepy>=1.0.0 ; extra == 'all'
+  - swig==4.* ; extra == 'all'
+  - matplotlib>=3.0 ; extra == 'all'
+  - lz4>=3.1.0 ; extra == 'all'
+  - mujoco==2.2 ; extra == 'all'
+  - opencv-python>=3.0 ; extra == 'all'
+  - pygame==2.1.0 ; extra == 'all'
+  - ale-py~=0.8.0 ; extra == 'all'
   - mujoco-py>=2.1,<2.2 ; extra == 'all'
   - box2d-py==2.3.5 ; extra == 'all'
+  - imageio>=2.14.1 ; extra == 'all'
   requires_python: '>=3.6'
 - pypi: https://files.pythonhosted.org/packages/af/cd/ce6e848bbf2c32314c9b237839119c5a564a59725b53157c856e90937b7a/markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
   name: markupsafe
