@@ -18,6 +18,7 @@ dependencies = [
     "brax==0.10.1",
     "scipy==1.12.0",
     "mujoco==3.2.6",
+    "mujoco-mjx==3.2.6",
     "etils==1.13.0",
     "rich==14.2.0",
     "nvidia-cudnn-cu11>=8.9,<9.0; platform_system == 'Linux'",
